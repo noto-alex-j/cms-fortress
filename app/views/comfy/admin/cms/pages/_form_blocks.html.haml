@@ -1,0 +1,44 @@
+- cms_object = @page || cms_object
+- tags = cms_object.tags(true).select{|t| t.is_cms_block?}.uniq{|t| t.identifier}
+
+- namespace = Hash.new { |namespace, tab_name| namespace[tab_name] = Hash.new { |tags_by_section_name, section_name| tags_by_section_name[section_name] = [] } }
+- tags.each do |tag|
+  - tab_name, section_name, * = tag.namespace.try(:split, '.')
+  - namespace[tab_name || 'default'][section_name] << tag
+
+#form-blocks
+  - if tags.empty?
+    .no-tags
+      = link_to cms_object.layout.label, edit_comfy_admin_cms_site_layout_path(@site, cms_object.layout)
+      = t('.no_tags').html_safe
+
+  - else
+    = fields_for :blocks, nil, :builder => ComfortableMexicanSofa::FormBuilder, :layout => :horizontal do |cms_blocks|
+
+      .panel
+        .panel-body
+          - if namespace.size > 1
+            %div
+              %ul.list-inline.tabs-bordered.margin-b-20
+                - namespace.each_with_index do |(tab_name, tags_by_section_name), index|
+                  %li{:class => index == 0 ? 'active' : nil}
+                    = link_to tab_name.humanize, "#ns-#{tab_name}", :data => {:toggle => 'tab'}
+          .tab-content
+            - block_index = 0
+            - namespace.each_with_index do |(tab_name, tags_by_section_name), index|
+              .tab-pane{:id => "ns-#{tab_name}", :class => index == 0 ? 'active' : nil}
+                - tags_by_section_name.each_with_index do |(section_name, tags), index|
+                  - unless index == 0
+                    %hr
+
+                  .panel
+                    - if section_name.present?
+                      %header.panel-heading
+                        %h2.panel-title= section_name.humanize
+                    .panel-body
+                      - tags.each do |tag|
+                        - begin
+                          = cms_blocks.send(tag.class.to_s.demodulize.underscore, tag, block_index)
+                        - rescue
+                          - Rails.env.production?? nil : raise
+                        - block_index += 1

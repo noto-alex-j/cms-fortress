@@ -1,0 +1,17 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title= t('cms.fortress.title')
+    = render 'layouts/comfy/admin/cms/head'
+  %body
+    = yield
+    :javascript
+      $(document).on('ready load', function(){
+          $('.i-checks').iCheck({
+              checkboxClass: 'icheckbox_flat-blue',
+              radioClass: 'icheckbox_flat-blue'
+          });
+      });

@@ -1,0 +1,171 @@
+%section{"hoe-nav-placement" => "left", "hoe-navigation-type" => "vertical", "theme-layout" => "wide-layout"}
+  / side navigation start
+  #hoeapp-wrapper.hoe-hide-lpanel{"hoe-device-type" => "desktop"}
+    %header#hoe-header{"hoe-lpanel-effect" => "shrink"}
+      .hoe-left-header
+        %a{:href => "#"}<
+          = " #{current_site[0]}"
+          %span>= current_site[1..-1]
+        %span.hoe-sidebar-toggle
+          %a{:href => "#"}
+      .hoe-right-header{"hoe-position-type" => "relative"}
+        %span.hoe-sidebar-toggle
+          %a{:href => "#"}
+        -#%ul.left-navbar
+          %li
+            .top-search.hidden-xs
+              %form
+                %input.form-control{:placeholder => "Search here", :type => "text"}/
+                %i.ion-search
+        %ul.right-navbar.navbar-right
+          -#%li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %i.ion-ios-bell-outline
+              %span.label.label-danger 4
+            %ul.dropdown-menu.dropdown-menu-scale.lg-dropdown.notifications
+              %li
+                %p
+                  You have 3 new notifications
+                  %a{:href => "#"} Mark all Read
+              %li.unread-notifications
+                %a{:href => "#"}
+                  %i.ion-ios-email-outline.pull-right
+                  %span.line You have 8 Messages
+                  %span.small-line 3 Minutes ago
+              %li
+                %a{:href => "#"}
+                  %i.ion-social-twitter-outline.pull-right
+                  %span.line You have 3 new followers
+                  %span.small-line 8 Minutes ago
+              %li
+                %a{:href => "#"}
+                  %i.ion-ios-download-outline.pull-right
+                  %span.line Download Complete
+                  %span.small-line 6 Minutes ago
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              = "Current Site: #{current_site}"
+            %ul.dropdown-menu.dropdown-menu-scale.lang-dropdown
+              - all_sites.each do |site|
+                %li
+                  = link_to comfy_admin_cms_site_pages_path(site) do
+                    = site.label
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              -#%img.img-circle{:alt => "", :src => "assets/images/avtar.png", :width => "30"}/
+              = current_cms_fortress_user.display_name
+            %ul.dropdown-menu.dropdown-menu-scale.user-dropdown
+              -#%li
+              -#  %a{:href => "#"}
+              -#    %i.ion-email-unread
+              -#    Inbox
+              -#    %span.label.label-warning 3
+              -#%li
+              -#  %a{:href => "#"}
+              -#    %i.ion-person
+              -#    Profile
+              -#%li
+              -#  %a{:href => "#"}
+              -#    %i.ion-settings
+              -#    Settings
+              -#    %span.label.label-primary 3/9
+              -#%li
+              -#  %a{:href => "#"}
+              -#    %i.ion-calendar
+              -#    Calendar
+              -#%li
+              -#  %a{:href => "#"}
+              -#    %i.ion-ios-compose
+              -#    Tasks
+              %li
+                = link_to destroy_cms_fortress_user_session_path, method: :delete do
+                  %i.ion-log-out
+                  Logout
+    #hoeapp-container{"hoe-color-type" => "lpanel-bg5", "hoe-lpanel-effect" => "shrink"}
+      %aside#hoe-left-panel{"hoe-position-type" => "absolute"}
+        %ul.nav.panel-list
+          %li{class: ("active" if current_page? dashboard_site_path)}
+            = link_to dashboard_site_path do
+              %i.fa.fa-home
+              %span.menu-text Dashboard
+              %span.selected
+          - if Cms::Fortress.configuration.content_resources.any? {|resource| can? :view, "contents.#{resource[:name]}" }
+            %li.hoe-has-menu(class="#{ "active" if content_page? }")
+              %a{:href => "javascript:void(0)"}
+                %i.fa.fa-folder
+                %span.menu-text
+                  = t("cms.fortress.contents")
+                %span.selected
+              %ul.hoe-sub-menu
+                - Cms::Fortress.configuration.content_resources.each do |resource|
+                  - title = resource[:title].nil? ? "" : t(resource[:title], site_name: @site.label)
+                  - if ["divider", "dropdown-header"].include?(resource[:name])
+                    = content_tag(:li, title, class: resource[:name], role: "presentation")
+                  - else
+                    %li{class: "#{'active' if resource_path(resource[:path]) && current_page?(resource_path(resource[:path]))}"}
+                      %a{href: (resource_path(resource[:path]))}
+                        %span.menu-text=title
+                        %span.selected
+          - if Cms::Fortress.configuration.design_resources.any? {|resource| can? :view, "design.#{resource[:name]}" }
+            %li.hoe-has-menu(class="#{ "active" if design_page? }")
+              %a{:href => "javascript:void(0)"}
+                %i.fa.fa-desktop
+                %span.menu-text
+                  = t("cms.fortress.design")
+                %span.selected
+              %ul.hoe-sub-menu
+                - Cms::Fortress.configuration.design_resources.each do |resource|
+                  - title = resource[:title].nil? ? "" : t(resource[:title], site_name: @site.label)
+                  - if ["divider", "dropdown-header"].include?(resource[:name])
+                    = content_tag(:li, title, class: resource[:name], role: "presentation")
+                  - else
+                    %li{class: "#{'active' if resource_path(resource[:path]) && current_page?(resource_path(resource[:path]))}"}
+                      %a{href: "#{resource_path resource[:path]}"}
+                        %span.menu-text=title
+                        %span.selected
+          - if Cms::Fortress.configuration.settings_resources.any? {|resource| can? :view, "settings.#{resource[:name]}" }
+            %li.hoe-has-menu(class="#{ "active" if admin_page? }")
+              %a{:href => "javascript:void(0)"}
+                %i.fa.fa-cogs
+                %span.menu-text
+                  = t("cms.fortress.settings")
+                %span.selected
+              %ul.hoe-sub-menu
+                - Cms::Fortress.configuration.settings_resources.each do |resource|
+                  - title = resource[:title].nil? ? "" : t(resource[:title], site_name: @site.label)
+                  - if resource[:super_user] && current_cms_fortress_user.type.eql?(:super_user)
+                    - if ["divider", "dropdown-header"].include?(resource[:name])
+                      = content_tag(:li, title, class: resource[:name], role: "presentation")
+                    - else
+                      %li{class: "#{'active' if resource_path(resource[:path]) && current_page?(resource_path(resource[:path]))}"}
+                        %a{href: "#{resource_path resource[:path]}"}
+                          %span.menu-text=title
+                          %span.selected
+                  - else
+                    - if ["divider", "dropdown-header"].include?(resource[:name])
+                      = content_tag(:li, title, class: resource[:name], role: "presentation")
+                    - else
+                      %li{class: "#{'active' if resource_path(resource[:path]) && current_page?(resource_path(resource[:path]))}"}
+                        %a{href: "#{resource_path resource[:path]}"}
+                          %span.menu-text=title
+                          %span.selected
+      / aside left menu end
+      / start main content
+      %section#main-content
+        .space-30
+        .container
+          - if flash.any?
+            .alerts
+              - flash.each do |type, message|
+                %div{class: "alert alert-#{type}"}= message
+          
+          = yield
+        -#.space-30
+        -#.container
+        -#  / widget box row
+
+        -#/ footer start
+        -#.footer
+        -#  .row
+        -#    .col-sm-12
+        -#      %span © Copyright 2016. Assan

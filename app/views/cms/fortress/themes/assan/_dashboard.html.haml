@@ -1,0 +1,309 @@
+-#.row
+  .col-sm-6.col-md-3.margin-b-30
+    .statistic-widget-box.bg-primary
+      %i.fa.fa-shopping-bag
+      .content.overflow-hidden
+        %h1 7495
+        %p New Orders
+  / statistic box end
+  / col end
+  .col-sm-6.col-md-3.margin-b-30
+    .statistic-widget-box.bg-danger
+      %i.fa.fa-usd
+      .content.overflow-hidden
+        %h1 89M $
+        %p Total Profit
+  / statistic box end
+  / col end
+  .col-sm-6.col-md-3.margin-b-30
+    .statistic-widget-box.bg-success
+      %i.fa.fa-users
+      .content.overflow-hidden
+        %h1 270+
+        %p New Users
+  / statistic box end
+  / col end
+  .col-sm-6.col-md-3.margin-b-30
+    .statistic-widget-box.bg-info
+      %i.fa.fa-bar-chart
+      .content.overflow-hidden
+        %h1 19
+        %p Pending Tasks
+/ statistic box end
+/ col end
+/ widget box row
+-#.row
+  .col-md-6
+    .panel
+      %header.panel-heading
+        .panel-actions
+          %a.panel-action.panel-action-toggle{"data-panel-toggle" => "", :href => "javascript:void(0)"}
+          %a.panel-action.action-link{:href => "javascript:void(0)"}
+            %i.ion-refresh
+          %a.panel-action.panel-action-dismiss{"data-panel-dismiss" => "", :href => "javascript:void(0)"}
+          .dropdown.pull-left
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+              %i.ion-more
+            %ul.dropdown-menu.dropdown-menu-scale
+              %li
+                %a{:href => "javascript:void(0)"} Action
+              %li
+                %a{:href => "javascript:void(0)"} Just Action
+              %li
+                %a{:href => "javascript:void(0)"} Action Now
+        %h2.panel-title
+          Site visits
+          %span.helping-text last week
+      .panel-body
+        .flot-chart
+          #flot-line-chart.flot-chart-data
+  / end panel body
+  / end panel
+  / end col 6
+  .col-md-6
+    .panel
+      %header.panel-heading
+        .panel-actions
+          %a.panel-action.panel-action-toggle{"data-panel-toggle" => "", :href => "javascript:void(0)"}
+          %a.panel-action.action-link{:href => "javascript:void(0)"}
+            %i.ion-refresh
+          %a.panel-action.panel-action-dismiss{"data-panel-dismiss" => "", :href => "javascript:void(0)"}
+          .dropdown.pull-left
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+              %i.ion-more
+            %ul.dropdown-menu.dropdown-menu-scale
+              %li
+                %a{:href => "javascript:void(0)"} Action
+              %li
+                %a{:href => "javascript:void(0)"} Just Action
+              %li
+                %a{:href => "javascript:void(0)"} Action Now
+        %h2.panel-title Analytics
+      .panel-body
+        .chartjs-data
+          %canvas#barChart{:height => "145"}
+/ end panel body
+/ end panel
+/ end col 6
+/ end row
+.row
+  .col-md-6
+    .panel
+      %header.panel-heading
+        .panel-actions
+          %a.panel-action.panel-action-toggle{"data-panel-toggle" => "", :href => "javascript:void(0)"}
+          -#%a.panel-action.panel-action-dismiss{"data-panel-dismiss" => "", :href => "javascript:void(0)"}
+          -#.dropdown.pull-left
+          -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+          -#    %i.ion-more
+          -#  %ul.dropdown-menu.dropdown-menu-scale
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Action
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Just Action
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Action Now
+        %h2.panel-title Draft Pages
+      .panel-body
+        .scrollDiv
+          %table.table.table-striped
+            %tbody
+              %tr
+                %th
+                  %div Name
+                %th
+                  %div Path
+                %th{:align => "center"}
+                  %div Updated
+                %th{:align => "center"}
+              - @site.pages.drafted.order(updated_at: :desc).each do |draft|
+                %tr
+                  %td= draft.label
+                  %td= draft.full_path
+                  %td{:align => "center"}= "#{time_ago_in_words draft.updated_at} Ago"
+                  %td.color-blue-grey{:align => "center", :nowrap => "nowrap"}
+                    = link_to edit_comfy_admin_cms_site_page_path(@site, draft), class: "btn btn-xs btn-info" do
+                      %span.glyphicon.glyphicon-edit
+                      Edit
+
+                    = link_to comfy_admin_cms_site_page_path(@site, draft, preview: true), target: "_blank", method: :put, class: "btn btn-xs btn-primary" do
+                      %span.glyphicon.glyphicon-search
+                      Preview
+  / end panel body
+  / end panel
+  / end col 6
+  .col-md-6
+    .panel
+      %header.panel-heading
+        .panel-actions
+          %a.panel-action.panel-action-toggle{"data-panel-toggle" => "", :href => "javascript:void(0)"}
+          -#%a.panel-action.panel-action-dismiss{"data-panel-dismiss" => "", :href => "javascript:void(0)"}
+          -#.dropdown.pull-left
+          -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+          -#    %i.ion-more
+          -#  %ul.dropdown-menu.dropdown-menu-scale
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Action
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Just Action
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Action Now
+        %h2.panel-title Reviewed Pages
+      .panel-body
+        .scrollDiv
+          %table.table.table-striped
+            %tbody
+              %tr
+                %th
+                  %div Name
+                %th
+                  %div Path
+                %th{:align => "center"}
+                  %div Updated
+                %th{:align => "center"}
+              - @site.pages.reviewed.order(updated_at: :desc).each do |review|
+                %tr
+                  %td= review.label
+                  %td= review.full_path
+                  %td{:align => "center"}= "#{time_ago_in_words review.updated_at} Ago"
+                  %td.color-blue-grey{:align => "center", :nowrap => "nowrap"}
+                    = link_to edit_comfy_admin_cms_site_page_path(@site, review), class: "btn btn-xs btn-info" do
+                      %span.glyphicon.glyphicon-edit
+                      Edit
+
+                    = link_to comfy_admin_cms_site_page_path(@site, review, preview: true), target: "_blank", method: :put, class: "btn btn-xs btn-primary" do
+                      %span.glyphicon.glyphicon-search
+                      Preview
+/ end panel body
+/ end panel
+/ end col 6
+/ end row
+.row
+  .col-md-6
+    .panel
+      %header.panel-heading
+        .panel-actions
+          %a.panel-action.panel-action-toggle{"data-panel-toggle" => "", :href => "javascript:void(0)"}
+          -#%a.panel-action.panel-action-dismiss{"data-panel-dismiss" => "", :href => "javascript:void(0)"}
+          -#.dropdown.pull-left
+          -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+          -#    %i.ion-more
+          -#  %ul.dropdown-menu.dropdown-menu-scale
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Action
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Just Action
+          -#    %li
+          -#      %a{:href => "javascript:void(0)"} Action Now
+        %h2.panel-title Recent Updates
+      .panel-body
+        .scrollDiv
+          .streamline
+            - @site.pages.order(updated_at: :desc).limit(20).each do |page|
+              .stream-item{class: [('stream-success' if page.published?), ('stream-primary' if page.reviewed?), ('stream-warning' if page.drafted?)]}
+                .stream-content
+                  %small.text-muted= "#{time_ago_in_words page.updated_at} Ago"
+                  %p= "#{page.label} Page #{('Published' if page.published?) || ('Reviewed' if page.reviewed?) || ('Drafted' if page.drafted?)}"
+  / .stream-item
+  / end panel body
+  / end panel
+  / end col 6
+  -#.col-md-6
+    .panel
+      %header.panel-heading
+        .panel-actions
+          %a.panel-action.panel-action-toggle{"data-panel-toggle" => "", :href => "javascript:void(0)"}
+          %a.panel-action.panel-action-dismiss{"data-panel-dismiss" => "", :href => "javascript:void(0)"}
+          .dropdown.pull-left
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+              %i.ion-more
+            %ul.dropdown-menu.dropdown-menu-scale
+              %li
+                %a{:href => "javascript:void(0)"} Action
+              %li
+                %a{:href => "javascript:void(0)"} Just Action
+              %li
+                %a{:href => "javascript:void(0)"} Action Now
+        %h2.panel-title Feeds
+      -#.panel-body
+        .scrollDiv
+          .media-group.feeds-group
+            .media-group-item
+              .media
+                .media-left
+                  .avatar
+                    %img.img-circle{:alt => "", :src => "assets/images/avtar-1.jpg", :width => "40"}/
+                .media-body
+                  %h5
+                    %a.text-color{:href => "javascript:void(0)"} Some of the fantastic things people have had to say about Ooooh
+                  %small.text-muted 2 days ago
+            / .media-group-item
+            .media-group-item
+              .media
+                .media-left
+                  .avatar
+                    %img.img-circle{:alt => "", :src => "assets/images/avtar-2.jpg", :width => "40"}/
+                .media-body
+                  %h5
+                    %a.text-color{:href => "javascript:void(0)"} Here are just some of the magazine reviews we have had
+                  %small.text-muted 1 day ago
+            / .media-group-item
+            .media-group-item
+              .media
+                .media-left
+                  .avatar
+                    %img.img-circle{:alt => "", :src => "assets/images/avtar-3.jpg", :width => "40"}/
+                .media-body
+                  %h5
+                    %a.text-color{:href => "javascript:void(0)"} Lorem ipsum dolor amet, consectetur adipisicing elit.
+                  %small.text-muted 2 days ago
+            / .media-group-item
+            .media-group-item
+              .media
+                .media-left
+                  .avatar
+                    %img.img-circle{:alt => "", :src => "assets/images/avtar-4.jpg", :width => "40"}/
+                .media-body
+                  %h5
+                    %a.text-color{:href => "javascript:void(0)"} “It’s just brilliant. I will recommend it to everyone!”
+                  %small.text-muted 2 mins ago
+            / .media-group-item
+            .media-group-item
+              .media
+                .media-left
+                  .avatar
+                    %img.img-circle{:alt => "", :src => "assets/images/avtar-5.jpg", :width => "40"}/
+                .media-body
+                  %h5
+                    %a.text-color{:href => "javascript:void(0)"} John has just started working on the project
+                  %small.text-muted right now
+/ .media-group-item
+/ end panel body
+/ end panel
+/ end col 6
+/ end row
+-#.row
+  .col-md-12
+    .panel
+      %header.panel-heading
+        .panel-actions
+          %a.panel-action.panel-action-toggle{"data-panel-toggle" => "", :href => "javascript:void(0)"}
+          %a.panel-action.panel-action-dismiss{"data-panel-dismiss" => "", :href => "javascript:void(0)"}
+          .dropdown.pull-left
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+              %i.ion-more
+            %ul.dropdown-menu.dropdown-menu-scale
+              %li
+                %a{:href => "javascript:void(0)"} Action
+              %li
+                %a{:href => "javascript:void(0)"} Just Action
+              %li
+                %a{:href => "javascript:void(0)"} Action Now
+        %h2.panel-title World Map
+      .panel-body
+        #world-map-markers{:style => "height: 400px"}
+/ end panel body
+/ end panel
+/ end col 6
+/ row end
+/ end container

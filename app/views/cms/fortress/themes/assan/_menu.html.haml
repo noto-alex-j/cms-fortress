@@ -1,0 +1,361 @@
+-##hoeapp-wrapper.hoe-hide-lpanel{"hoe-device-type" => "desktop"}
+-#  %header#hoe-header{"hoe-lpanel-effect" => "shrink"}
+-#    .hoe-left-header
+-#      %a{:href => "#"}
+-#        A
+-#        %span SSAN
+-#      %span.hoe-sidebar-toggle
+-#        %a{:href => "#"}
+-#    .hoe-right-header{"hoe-position-type" => "relative"}
+-#      %span.hoe-sidebar-toggle
+-#        %a{:href => "#"}
+-#      %ul.left-navbar
+-#        %li
+-#          .top-search.hidden-xs
+-#            %form
+-#              %input.form-control{:placeholder => "Search here", :type => "text"}
+-#                %i.ion-search
+-#        %ul.right-navbar.navbar-right
+-#          %li.dropdown
+-#            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+-#              %i.ion-ios-bell-outline
+-#              %span.label.label-danger 4
+-#            %ul.dropdown-menu.dropdown-menu-scale.lg-dropdown.notifications
+-#              %li
+-#                %p
+-#                  You have 3 new notifications
+-#                  %a{:href => "#"} Mark all Read
+-#              %li.unread-notifications
+-#                %a{:href => "#"}
+-#                  %i.ion-ios-email-outline.pull-right
+-#                  %span.line You have 8 Messages
+-#                  %span.small-line 3 Minutes ago
+-#              %li
+-#                %a{:href => "#"}
+-#                  %i.ion-social-twitter-outline.pull-right
+-#                  %span.line You have 3 new followers
+-#                  %span.small-line 8 Minutes ago
+-#              %li
+-#                %a{:href => "#"}
+-#                  %i.ion-ios-download-outline.pull-right
+-#                  %span.line Download Complete
+-#                  %span.small-line 6 Minutes ago
+-#          %li.dropdown
+-#            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+-#              %img{:alt => "", :src => "assets/images/us.png"} English
+-#              %ul.dropdown-menu.dropdown-menu-scale.lang-dropdown
+-#                %li
+-#                  %a{:href => "#"}
+-#                    %img{:alt => "", :src => "assets/images/us.png"} English
+-#                  %li
+-#                    %a{:href => "#"}
+-#                      %img{:alt => "", :src => "assets/images/es.png"} Spanish
+-#                    %li
+-#                      %a{:href => "#"}
+-#                        %img{:alt => "", :src => "assets/images/tr.png"} Turkish
+-#                  %li.dropdown
+-#                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+-#                      %img.img-circle{:alt => "", :src => "assets/images/avtar.png", :width => "30"} Emily Doe
+-#                      %ul.dropdown-menu.dropdown-menu-scale.user-dropdown
+-#                        %li
+-#                          %a{:href => "#"}
+-#                            %i.ion-email-unread
+-#                            Inbox
+-#                            %span.label.label-warning 3
+-#                        %li
+-#                          %a{:href => "#"}
+-#                            %i.ion-person
+-#                            Profile
+-#                        %li
+-#                          %a{:href => "#"}
+-#                            %i.ion-settings
+-#                            Settings
+-#                            %span.label.label-primary 3/9
+-#                        %li
+-#                          %a{:href => "#"}
+-#                            %i.ion-calendar
+-#                            Calendar
+-#                        %li
+-#                          %a{:href => "#"}
+-#                            %i.ion-ios-compose
+-#                            Tasks
+-#                        %li
+-#                          %a{:href => "#"}
+-#                            %i.ion-log-out
+-#                            Logout
+-#              #hoeapp-container{"hoe-color-type" => "lpanel-bg7", "hoe-lpanel-effect" => "shrink"}
+-#                %aside#hoe-left-panel{"hoe-position-type" => "absolute"}
+-#                  %ul.nav.panel-list
+-#                    %li.active
+-#                      %a{:href => "index.html"}
+-#                        %i.fa.fa-home
+-#                        %span.menu-text Dashboard
+-#                        %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.fa.fa-envelope
+-#                        %span.menu-text Email
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "email-inbox.html"}
+-#                            %span.menu-text Inbox
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "email-compose.html"}
+-#                            %span.menu-text Compose
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "email-view.html"}
+-#                            %span.menu-text Email View
+-#                            %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.fa.fa-bar-chart-o
+-#                        %span.menu-text Charts
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "chart-flot.html"}
+-#                            %span.menu-text Flot charts
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "chart-morris.html"}
+-#                            %span.menu-text Morris charts
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "chart-chartjs.html"}
+-#                            %span.menu-text Chartjs
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "chart-sparkline.html"}
+-#                            %span.menu-text Sparkline
+-#                            %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.fa.fa-th-large
+-#                        %span.menu-text Forms
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "form-basic.html"}
+-#                            %span.menu-text Basic elements
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "form-file-upload.html"}
+-#                            %span.menu-text File upload
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "form-text-editor.html"}
+-#                            %span.menu-text Text editor
+-#                            %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.fa.fa-table
+-#                        %span.menu-text Tables
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "table-static.html"}
+-#                            %span.menu-text Static tables
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "table-responsive.html"}
+-#                            %span.menu-text Responsive Tables
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "table-data.html"}
+-#                            %span.menu-text Data tables
+-#                            %span.selected
+-#                    %li
+-#                      %a{:href => "calendar.html"}
+-#                        %i.fa.fa-calendar
+-#                        %span.menu-text Calendar
+-#                        %span.selected
+-#                    %li
+-#                      %a{:href => "user-profile.html"}
+-#                        %i.fa.fa-user
+-#                        %span.menu-text User Profile
+-#                        %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.fa.fa-envelope
+-#                        %span.menu-text Pages
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "page-login.html"}
+-#                            %span.menu-text Login
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "page-register.html"}
+-#                            %span.menu-text Register
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "page-404.html"}
+-#                            %span.menu-text 404
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "page-forget-password.html"}
+-#                            %span.menu-text Forget password
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "page-empty.html"}
+-#                            %span.menu-text Empty page
+-#                            %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.fa.fa-cogs
+-#                        %span.menu-text UI elements
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "ui-buttons.html"}
+-#                            %span.menu-text Buttons
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "ui-typography.html"}
+-#                            %span.menu-text typography
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "ui-tabs.html"}
+-#                            %span.menu-text Tabs
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "ui-alerts.html"}
+-#                            %span.menu-text Alerts
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "ui-tooltip_popovers.html"}
+-#                            %span.menu-text Tooltips  popovers
+-#                            %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.fa.fa-map-o
+-#                        %span.menu-text Maps
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "map-vector.html"}
+-#                            %span.menu-text Vector map
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "map-google.html"}
+-#                            %span.menu-text Google map
+-#                            %span.selected
+-#                    %li.hoe-has-menu
+-#                      %a{:href => "javascript:void(0)"}
+-#                        %i.ion-ios-filing-outline
+-#                        %span.menu-text Menu Lavel 1
+-#                        %span.selected
+-#                      %ul.hoe-sub-menu
+-#                        %li
+-#                          %a{:href => "javascript:void(0)"}
+-#                            %span.menu-text level 2
+-#                            %span.selected
+-#                        %li
+-#                          %a{:href => "javascript:void(0)"}
+-#                            %span.menu-text level 2
+-#                            %span.selected
+-#                        %li.hoe-has-menu
+-#                          %a{:href => "javascript:void(0)"}
+-#                            %span.menu-text level 2
+-#                            %span.selected
+-#                          %ul.hoe-sub-menu
+-#                            %li.hoe-has-menu
+-#                              %a{:href => "javascript:void(0)"}
+-#                                %span.menu-text level 3
+-#                                %span.selected
+-#                              %ul.hoe-sub-menu
+-#                                %li
+-#                                  %a{:href => "javascript:void(0)"}
+-#                                    %span.menu-text level 4
+-#                                    %span.selected
+-#                                %li
+-#                                  %a{:href => "javascript:void(0)"}
+-#                                    %span.menu-text level 4
+-#                                    %span.selected
+-#                            %li
+-#                              %a{:href => "javascript:void(0)"}
+-#                                %span.menu-text level 3
+-#                                %span.selected
+-#                            %li
+-#                              %a{:href => "javascript:void(0)"}
+-#                                %span.menu-text level 3
+-#                                %span.selected
+-#                            %li
+-#                              %a{:href => "javascript:void(0)"}
+-#                                %span.menu-text level 3
+-#                                %span.selected
+-#                                  / aside left menu end
+
+-#%nav.navbar.navbar-default(role="navigation")
+-#  .container-fluid
+-#    .navbar-header
+-#      %button.navbar-toggle(type="button" data-toggle="collapse" data-target="#main-nav")
+-#        %span.sr-only= t('cms.fortress.toggle_navigation')
+-#        %span.icon-bar
+-#        %span.icon-bar
+-#        %span.icon-bar
+-#      = link_to settings.title, settings.title_link, class: 'navbar-brand'
+-#
+-#    .collapse.navbar-collapse#main-nav
+-#      %ul.nav.navbar-nav
+-#
+-#        - if @site && !@site.new_record?
+-#          %li= topnav_item t("cms.fortress.admin.dashboard.title"), dashboard_site_path, current_page?(dashboard_site_path)
+-#
+-#          - if Cms::Fortress.configuration.content_resources.any? {|resource| can? :view, "contents.#{resource[:name]}" }
+-#            %li.dropdown(class="#{ "active" if content_page? }")
+-#              %a.dropdown-toggle(data-toggle='dropdown' href='#')
+-#                = t("cms.fortress.contents")
+-#                %b.caret
+-#              %ul.dropdown-menu
+-#
+-#                - Cms::Fortress.configuration.content_resources.each do |resource|
+-#                  - if resource[:super_user]
+-#                    - if current_cms_fortress_user.type.eql?(:super_user)
+-#                      = topnav_resource_item("contents", resource)
+-#                  - else
+-#                    = topnav_resource_item("contents", resource)
+-#
+-#          - if Cms::Fortress.configuration.design_resources.any? {|resource| can? :view, "designs.#{resource[:name]}" }
+-#            %li.dropdown(class="#{ "active" if design_page? }")
+-#              %a.dropdown-toggle(data-toggle='dropdown' href='#')
+-#                = t("cms.fortress.design")
+-#                %b.caret
+-#              %ul.dropdown-menu
+-#                - Cms::Fortress.configuration.design_resources.each do |resource|
+-#                  - if resource[:super_user]
+-#                    - if current_cms_fortress_user.type.eql?(:super_user)
+-#                      = topnav_resource_item("designs", resource)
+-#                  - else
+-#                    = topnav_resource_item("designs", resource)
+-#
+-#          - if Cms::Fortress.configuration.settings_resources.any? {|resource| can? :view, "settings.#{resource[:name]}" }
+-#            %li.dropdown(class="#{ "active" if admin_page? }")
+-#              %a.dropdown-toggle(data-toggle='dropdown' href='#')
+-#                = t("cms.fortress.settings")
+-#                %b.caret
+-#              %ul.dropdown-menu
+-#                - Cms::Fortress.configuration.settings_resources.each do |resource|
+-#                  - if resource[:super_user]
+-#                    - if current_cms_fortress_user.type.eql?(:super_user)
+-#                      = topnav_resource_item("settings", resource)
+-#                  - else
+-#                    = topnav_resource_item("settings", resource)
+-#
+-#
+-#        = render 'cms/fortress/admin/topnav'
+-#
+-#
+-#      - if current_cms_fortress_user
+-#        .btn-group.pull-right(style="margin-top: 8px;")
+-#          %button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown")
+-#            = current_cms_fortress_user.display_name
+-#            %span.caret
+-#          %ul.dropdown-menu(role="menu")
+-#            %li
+-#              = link_to t('cms.fortress.logout'), destroy_cms_fortress_user_session_path, :method => 'delete'
+-#
+-#

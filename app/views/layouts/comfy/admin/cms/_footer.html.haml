@@ -1,0 +1,12 @@
+.spacer
+.footer
+  %p.muted
+    &copy;
+    = Date.today.year
+    = link_to "CMS Fortress", "https://github.com/melvinsembrano/cms-fortress", target: '_blank'
+    (
+    = theme_name.titleize
+    )
+    |
+    = link_to 'ComfortableMexicanSofa', 'https://github.com/comfy', :target => '_blank'
+    %span.version= ComfortableMexicanSofa::VERSION
